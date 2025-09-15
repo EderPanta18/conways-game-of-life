@@ -2,6 +2,7 @@
 
 import numpy as np
 
+# Vecindad de Moore (8 vecinos)
 NEIGHBOR_OFFSETS = [
     (-1, -1),
     (0, -1),
@@ -15,7 +16,11 @@ NEIGHBOR_OFFSETS = [
 
 
 def step(cells: np.ndarray) -> np.ndarray:
-    """Siguiente generación con bordes sin wrap (fuera=muerto)."""
+    """
+    Siguiente generación sin wrap: el borde fuera de la matriz se considera muerto.
+    Implementación vectorizada: acolchado (pad) + suma de los 8 desplazamientos.
+    Reglas 23/3: vive con 2-3 vecinos, nace con 3 vecinos.
+    """
     h, w = cells.shape
     pad = np.pad(cells, 1, mode="constant", constant_values=0)
     nbrs = np.zeros_like(cells, dtype=np.uint8)
