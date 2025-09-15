@@ -1,0 +1,24 @@
+# Ignorar entorno virtual
+Include/
+Lib/
+Scripts/
+pyvenv.cfg
+
+# Archivos compilados de Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Archivos de logs y temporales
+*.log
+*.tmp
+*.swp
+
+# Configuración local
+.vscode/
+.idea/
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
