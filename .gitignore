@@ -1,24 +1,52 @@
-# Ignorar entorno virtual
-Include/
-Lib/
-Scripts/
-pyvenv.cfg
-
-# Archivos compilados de Python
+# Python bytecode
 __pycache__/
-*.pyc
-*.pyo
+*.py[cod]
+
+# Extensiones compiladas
+*.so
 *.pyd
+*.dylib
 
-# Archivos de logs y temporales
+# Entornos virtuales
+.venv/
+venv/
+env/
+ENV/
+pip-wheel-metadata/
+
+# Paquetización / distribución
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# PyInstaller
+# Suele generar build/ y dist/; el .spec conviene versionarlo si se personaliza
+# (no se ignora a propósito)
+
+# Cachés y herramientas de test
+.pytest_cache/
+.tox/
+.coverage
+.coverage.*
+htmlcov/
+.mypy_cache/
+.pytype/
+.pyre/
+.cache/
+
+# Logs
 *.log
-*.tmp
-*.swp
+pip-log.txt
+pip-delete-this-directory.txt
 
-# Configuración local
+# Editores/IDE
 .vscode/
 .idea/
+*.code-workspace
 
-# Sistema operativo
+# Archivos del sistema operativo
 .DS_Store
+**/.DS_Store
 Thumbs.db
+Desktop.ini
