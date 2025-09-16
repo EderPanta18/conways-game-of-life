@@ -13,6 +13,10 @@ venv/
 env/
 ENV/
 pip-wheel-metadata/
+Lib/
+Scripts/
+Include/
+pyvenv.cfg
 
 # Paquetización / distribución
 build/
@@ -21,8 +25,8 @@ dist/
 .eggs/
 
 # PyInstaller
-# Suele generar build/ y dist/; el .spec conviene versionarlo si se personaliza
-# (no se ignora a propósito)
+# Archivos de configuración generados automáticamente por PyInstaller
+*.spec
 
 # Cachés y herramientas de test
 .pytest_cache/
