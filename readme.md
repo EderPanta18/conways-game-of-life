@@ -1,18 +1,19 @@
 # Conway's Game of Life
 
-Simulador de escritorio del clásico Juego de la Vida de Conway con interfaz gráfica moderna, controles de zoom, navegación por paneles y funcionalidad completa de guardado/carga de plantillas en formato JSON.
+Un simulador de escritorio del clásico Juego de la Vida de Conway con interfaz gráfica moderna, controles intuitivos y funcionalidad completa de guardado/carga de patrones.
+
+![Game of Life Screenshot](assets\images\game_of_life.png)
+_Captura de pantalla del simulador en funcionamiento_
 
 ## Características principales
 
-- Interfaz gráfica intuitiva desarrollada en PyQt6
-- Controles de reproducción, pausa y paso a paso
-- Zoom y navegación fluida por el tablero
-- Guardado y carga de patrones en formato JSON
-- Empaquetado como ejecutable independiente
-
-## Licencia
-
-Este software es **software libre** distribuido bajo licencia que permite su libre distribución y uso personal, pero **prohíbe expresamente su comercialización por terceros**. Únicamente el autor original conserva los derechos de comercialización.
+- **Interfaz gráfica moderna** desarrollada en PyQt6
+- **Controles de reproducción** completos (play, pausa, paso a paso, reset)
+- **Zoom y navegación fluida** por el tablero infinito
+- **Guardado y carga de patrones** en formato JSON estándar
+- **Dibujado interactivo** - haz clic para crear/eliminar células
+- **Velocidad ajustable** de simulación
+- **Contador de generaciones** en tiempo real
 
 ## Requisitos del sistema
 
@@ -26,23 +27,41 @@ Este software es **software libre** distribuido bajo licencia que permite su lib
 
 ```bash
 git clone <URL_DEL_REPOSITORIO>
-cd conways-game-of-life
+cd conway_game_life
 ```
 
-### 2. Configurar entorno virtual
+### 2. Crear y configurar entorno virtual
 
-**Windows (PowerShell):**
+**Windows:**
 
-```powershell
-py -m venv .venv
-.\.venv\Scripts\Activate.ps1
+```bash
+# Crear entorno virtual
+python -m venv venv
+
+# Navegar al directorio del entorno
+cd venv
+
+# Activar el entorno virtual
+source Scripts/activate
+
+# Regresar al directorio principal del proyecto
+cd ..
 ```
 
 **macOS/Linux:**
 
 ```bash
-python3 -m venv .venv
-source .venv/bin/activate
+# Crear entorno virtual
+python3 -m venv venv
+
+# Navegar al directorio del entorno
+cd venv
+
+# Activar el entorno virtual
+source bin/activate
+
+# Regresar al directorio principal del proyecto
+cd ..
 ```
 
 ### 3. Instalar dependencias
@@ -53,76 +72,124 @@ pip install -r requirements.txt
 
 ## Uso
 
-### Ejecutar en modo desarrollo
+### Ejecutar el simulador
 
 ```bash
 python src/main.py
 ```
 
-### Formato de plantillas JSON
+### Controles básicos
 
-Las plantillas utilizan la siguiente estructura:
+- **Clic izquierdo**: Activar/desactivar células (solo en modo edición)
+- **Q**: Cambiar entre modo edición y modo navegación
+- **Enter**: Reproducir/pausar simulación
+- **Rueda del ratón**: Hacer zoom
+- **Arrastrar**: Navegar por el tablero (solo en modo navegación)
+
+### Menús disponibles
+
+- **Archivo**: Nuevo, Abrir patrón, Guardar patrón, Salir
+- **Simulación**: Play/Pausa, Paso, Reset, Velocidad
+- **Ver**: Zoom In, Zoom Out, Ajustar a ventana
+
+## Formato de plantillas JSON
+
+Las plantillas siguen esta estructura estándar:
 
 ```json
 {
-  "width": 50,
-  "height": 50,
+  "width": 5,
+  "height": 5,
   "alive": [
-    [10, 15],
-    [11, 15],
-    [12, 15]
+    [1, 0],
+    [2, 1],
+    [0, 2],
+    [1, 2],
+    [2, 2]
   ]
 }
 ```
 
-- `width` y `height`: Dimensiones del tablero
+**Campos:**
+
+- `width` y `height`: Dimensiones mínimas del tablero
 - `alive`: Array de coordenadas [x, y] de células vivas
-- Las coordenadas deben estar dentro de los límites del tablero
 
-## Distribución
+## Crear ejecutable independiente (Opcional)
 
-### Generar ejecutable (Windows)
+Para usuarios que deseen distribuir el programa como un archivo ejecutable único:
 
-```bash
-pyinstaller --onefile --windowed ^
-  --name "Conways_Game_of_Life" ^
-  --icon=assets/app/app.ico ^
-  --add-data "assets/icons;assets/icons" ^
-  src/main.py
-```
-
-### Generar ejecutable (macOS/Linux)
+### Instalar PyInstaller
 
 ```bash
-pyinstaller --onefile --windowed \
-  --name "Conways_Game_of_Life" \
-  --icon=assets/app/app.ico \
-  --add-data "assets/icons:assets/icons" \
-  src/main.py
+pip install pyinstaller
 ```
 
-**Nota:** El separador en `--add-data` varía según el sistema: `;` para Windows, `:` para macOS/Linux.
+### Generar ejecutable
+
+**Windows:**
+
+```bash
+pyinstaller --onefile --windowed --name "Game of Life" --icon=assets/app/app.ico --add-data "assets/icons;assets/icons" src/main.py
+```
+
+**macOS/Linux:**
+
+```bash
+pyinstaller --onefile --windowed --name "Game of Life" --icon=assets/app/app.ico --add-data "assets/icons:assets/icons" src/main.py
+```
+
+El ejecutable se generará en la carpeta `dist/`.
+
+**Nota:** El separador en `--add-data` varía según el sistema:
+
+- Windows: `;` (punto y coma)
+- macOS/Linux: `:` (dos puntos)
 
 ## Solución de problemas
 
-### Iconos SVG no aparecen
+### Python no reconocido
 
-- Asegúrese de importar `PyQt6.QtSvg` en el código principal
-- Verifique que las opciones `--collect-*` estén incluidas en el comando de empaquetado
+- Asegúrate de que Python esté instalado y agregado al PATH del sistema
+- En Windows, puedes usar `py` en lugar de `python`
 
-### Ejecutable no encuentra recursos
+### Error de permisos (Windows)
 
-- Confirme que el separador en `--add-data` sea correcto para su sistema operativo
-- Verifique que las rutas de los assets sean relativas al directorio del proyecto
+- Ejecuta la terminal como administrador
+- Configura la política de ejecución: `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser`
 
-### Error de permisos en Windows
+### El entorno virtual no se activa
 
-- Ejecute PowerShell como administrador al crear el entorno virtual
-- Configure la política de ejecución: `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser`
+- Verifica que estés en el directorio `/venv/` antes de ejecutar el comando de activación
+- En Windows, usa `Scripts/activate` (no `bin/activate`)
+
+### Iconos SVG no aparecen en el ejecutable
+
+- Asegúrate de que `PyQt6.QtSvg` esté importado en `main.py`
+- Verifica que la carpeta `assets/icons` exista y contenga los archivos SVG
 
 ## Contribuciones
 
-Las contribuciones son bienvenidas siguiendo las pautas de la licencia. Para reportar bugs o solicitar características, utilice el sistema de issues del repositorio.
+Las contribuciones son bienvenidas. Para reportar bugs o solicitar nuevas características:
+
+1. Abre un issue describiendo el problema o la mejora
+2. Fork el repositorio y crea una rama para tu feature
+3. Envía un pull request con una descripción clara de los cambios
+
+## Licencia
+
+Este software es **software libre** distribuido bajo licencia que permite:
+
+- Libre distribución y uso personal
+- Modificación del código fuente
+- Distribución de versiones modificadas
+
+**Restricciones:**
+
+- Comercialización por terceros
+- Uso comercial sin autorización del autor original
+
+Únicamente el autor original conserva los derechos de comercialización.
 
 ---
 
