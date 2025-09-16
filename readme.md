@@ -2,8 +2,8 @@
 
 Un simulador de escritorio del clásico Juego de la Vida de Conway con interfaz gráfica moderna, controles intuitivos y funcionalidad completa de guardado/carga de patrones.
 
-![Game of Life Screenshot](assets\images\game_of_life.png)
-_Captura de pantalla del simulador en funcionamiento_
+![Game of Life Screenshot](assets/images/game_of_life.png)
+_Captura de pantalla del programa en funcionamiento_
 
 ## Características principales
 
