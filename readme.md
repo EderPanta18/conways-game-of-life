@@ -3,7 +3,7 @@
 Un simulador de escritorio del clásico Juego de la Vida de Conway con interfaz gráfica moderna, controles intuitivos y funcionalidad completa de guardado/carga de patrones.
 
 ![Game of Life Screenshot](assets/images/game_of_life.png)
-_Captura de pantalla del programa en funcionamiento_
+_Captura de pantalla del simulador en funcionamiento_
 
 ## Características principales
 
@@ -91,6 +91,7 @@ python src/main.py
 - **Archivo**: Nuevo, Abrir patrón, Guardar patrón, Salir
 - **Simulación**: Play/Pausa, Paso, Reset, Velocidad
 - **Ver**: Zoom In, Zoom Out, Ajustar a ventana
+- **Ayuda**: Acerca de, Instrucciones
 
 ## Formato de plantillas JSON
 
@@ -168,6 +169,11 @@ El ejecutable se generará en la carpeta `dist/`.
 - Asegúrate de que `PyQt6.QtSvg` esté importado en `main.py`
 - Verifica que la carpeta `assets/icons` exista y contenga los archivos SVG
 
+### Rendimiento lento con patrones grandes
+
+- Ajusta la velocidad de simulación en el menú
+- Usa zoom para enfocar áreas específicas del tablero
+
 ## Contribuciones
 
 Las contribuciones son bienvenidas. Para reportar bugs o solicitar nuevas características:
@@ -191,6 +197,35 @@ Este software es **software libre** distribuido bajo licencia que permite:
 
 Únicamente el autor original conserva los derechos de comercialización.
 
+## Posibles cambios futuros
+
+El desarrollo del simulador continúa evolucionando. Estas son algunas mejoras planeadas para futuras versiones:
+
+### Rendimiento y escalabilidad
+
+- **Optimización del tablero**: Implementación de algoritmos más eficientes para el cálculo de generaciones
+- **Aumento de límites del tablero**: Soporte para tableros de mayor tamaño sin impacto en el rendimiento
+- **Renderizado optimizado**: Mejoras en la visualización para patrones complejos
+
+### Interfaz y controles
+
+- **Customización de velocidad avanzada**: Control más granular de la velocidad de simulación con valores personalizados
+- **Más opciones de visualización**: Temas, colores personalizables, modos de visualización alternativos
+- **Atajos de teclado configurables**: Personalización completa de controles por el usuario
+
+### Análisis y métricas
+
+- **Más métricas de simulación**: Estadísticas detalladas de población, estabilidad y evolución
+- **Gráficos en tiempo real**: Visualización de datos estadísticos durante la simulación
+- **Historial de patrones**: Seguimiento de la evolución de patrones específicos
+
+### Funcionalidades adicionales
+
+- **Biblioteca de patrones extendida**: Catálogo más amplio de patrones clásicos y modernos
+- **Editor de patrones avanzado**: Herramientas de dibujo más sofisticadas
+- **Exportación de animaciones**: Capacidad de exportar simulaciones como GIF o video
+- **Modo de comparación**: Ejecutar múltiples variantes de un patrón simultáneamente
+
 ---
 
-_Desarrollado con Python y PyQt6 | © 2024 - Software libre con restricciones comerciales_
+_Desarrollado con Python y PyQt6 | © 2025 - Software libre con restricciones comerciales_
